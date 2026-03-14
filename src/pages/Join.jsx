@@ -56,7 +56,7 @@ export default function Join() {
         body: JSON.stringify({
           data: [{
             control_number: form.control_number,
-            date_submitted: form.date_submitted || new Date().toLocaleDateString("en-PH"),
+            date_submitted: new Date().toLocaleDateString("en-PH"),
             full_name: form.full_name,
             birthdate: form.birthdate,
             address: form.address,
