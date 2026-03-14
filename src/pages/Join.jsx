@@ -137,7 +137,15 @@ export default function Join() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <Field label="CONTROL NUMBER" name="control_number" placeholder="Ex: MCC-001" optional {...f} />
-                <Field label="DATE SUBMITTED" name="date_submitted" type="date" placeholder="" optional {...f} />
+                <div>
+                  <label className="block text-xs text-yellow-400 font-bold tracking-widest mb-2">DATE SUBMITTED</label>
+                  <input
+                    type="text"
+                    readOnly
+                    value={new Date().toLocaleDateString("en-PH")}
+                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-400 text-sm focus:outline-none cursor-default"
+                  />
+                </div>
               </div>
 
               <div className="border-t border-gray-800 pt-6">
