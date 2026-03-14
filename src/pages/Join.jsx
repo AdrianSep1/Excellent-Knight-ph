@@ -50,7 +50,11 @@ export default function Join() {
 
     setLoading(true);
     try {
-      const res = await fetch("https://sheetdb.io/api/v1/kwmbfq67cz6q8", {
+      // @ts-ignore
+      const sheetApiUrl = import.meta.env.VITE_SHEETDB_API;
+      if (!sheetApiUrl) throw new Error("Missing SheetDB API URL");
+
+      const res = await fetch(sheetApiUrl, {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
         body: JSON.stringify({

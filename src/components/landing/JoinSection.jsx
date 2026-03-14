@@ -21,8 +21,11 @@ export default function JoinSection() {
 
     setLoading(true);
     try {
+      const sheetApiUrl = import.meta.env.VITE_SHEETDB_API;
+      if (!sheetApiUrl) throw new Error("Missing SheetDB API URL");
+      
       // Save to Google Sheets via SheetDB
-      const res = await fetch("https://sheetdb.io/api/v1/m3o8aed3qqncx", {
+      const res = await fetch(sheetApiUrl, {
         method: "POST",
         headers: {
           "Accept": "application/json",
