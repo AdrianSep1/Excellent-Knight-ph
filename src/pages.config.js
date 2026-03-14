@@ -49,11 +49,12 @@
  */
 import Home from './pages/Home';
 import Rules from './pages/Rules';
-
+import Join from './pages/Join';
 
 export const PAGES = {
     "Home": Home,
     "Rules": Rules,
+    "Join": Join,
 }
 
 export const pagesConfig = {

@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Vision & Mission", href: "#vision", scroll: true },
   { label: "Rules", href: "/Rules", scroll: false },
   { label: "Contact", href: "#contact", scroll: true },
+  { label: "Join", href: "/Join", scroll: false },
 ];
 
 export default function Navbar() {
@@ -46,7 +47,10 @@ export default function Navbar() {
               <button
                 key={link.label}
                 onClick={() => handleClick(link)}
-                className="text-gray-300 hover:text-yellow-400 text-sm font-semibold tracking-wide transition-colors duration-200"
+                className={link.label === "Join"
+                  ? "bg-yellow-500 hover:bg-yellow-400 text-black text-sm font-black tracking-wide px-4 py-2 rounded-lg transition-colors duration-200"
+                  : "text-gray-300 hover:text-yellow-400 text-sm font-semibold tracking-wide transition-colors duration-200"
+                }
               >
                 {link.label}
               </button>
