@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LOGO_URL = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_695f6c9229c96290eaa3c4b5/b20696d12_FINALLOGO4.png";
 
@@ -16,6 +17,8 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -26,10 +29,19 @@ export default function Navbar() {
   const handleClick = (link) => {
     setMobileOpen(false);
     if (link.scroll) {
-      const el = document.querySelector(link.href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (location.pathname !== "/") {
+        navigate("/");
+        // Wait a tick for the home page to render before scrolling
+        setTimeout(() => {
+          const el = document.querySelector(link.href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      } else {
+        const el = document.querySelector(link.href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
     } else {
-      window.location.href = link.href;
+      navigate(link.href);
     }
   };
 
